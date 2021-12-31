@@ -100,19 +100,20 @@ class EmployeesController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $imageold = $model->image;
+        $imageOld = $model->image;
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->validate()) {
-                if (!empty($model->position_list))
+                if (!empty($model->position_list)) {
                     $model->position = $model->position_list;
                     $model->returnPost();
+                }
                 if ($model->imageFile = UploadedFile::getInstance($model, 'image')) {
-                    if ($name = $model->uploadImage($model->imageFile, $imageold)) {
+                    if ($name = $model->uploadImage($model->imageFile, $imageOld)) {
                         $model->image = $name;
                     }
                 } else {
-                    $model->image = $imageold;
+                    $model->image = $imageOld;
                 }
                 if ($model->save()) {
                     return $this->redirect(['view', 'id' => $model->id]);

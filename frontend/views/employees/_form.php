@@ -19,8 +19,14 @@ use frontend\models\Placement;
     <div class ='mb-4'>
         <?= $form->field($model, 'name', ['options' => ['class' => 'p-0 col-5 mb-3']])->textInput(['maxlength' => true]) ?>
 
+        <?php 
+            if ($position = $model->positionName) {
+                echo '<div class="d-flex mt-4">Последняя занимаемая должность - <p class="ms-2 mb-0 font-weight-bold">' . $model->positionName . '.</p></div>';
+                echo '<div class="d-flex">Статус сотрудника - <p class="ms-2 font-weight-bold">' . $model->status . '.</p></div>';
+            }
+        ?>
+
         <div class='p-0 mb-3 col-3'>
-            <label class='control-label' for='employees-position_list'>Должность</label>
             <?= Chosen::widget([
                     'model' => $model,
                     'attribute' => 'position_list',
@@ -33,7 +39,7 @@ use frontend\models\Placement;
                     //     'class' => 'vehicle_id form-control input-sm',
                     // ],
                     'multiple' => false,
-                    'placeholder' => 'Выберите должность',
+                    'placeholder' => 'Выберите новую должность',
                     'clientOptions' => [
                         'search_contains' => true,
                         'max_selected_options' => 1,

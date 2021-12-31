@@ -25,7 +25,6 @@ use yii\helpers\ArrayHelper;
 class Employees extends \yii\db\ActiveRecord
 {   
     public $imageFile;
-    public $fileName;
     public $position_list;
     /**
      * {@inheritdoc}
