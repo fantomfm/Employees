@@ -20,7 +20,7 @@ use frontend\models\Placement;
         <?= $form->field($model, 'name', ['options' => ['class' => 'p-0 col-5 mb-3']])->textInput(['maxlength' => true]) ?>
 
         <?php 
-            if ($position = $model->positionName) {
+            if ($model->positionName) {
                 echo '<div class="d-flex mt-4">Последняя занимаемая должность - <p class="ms-2 mb-0 font-weight-bold">' . $model->positionName . '.</p></div>';
                 echo '<div class="d-flex">Статус сотрудника - <p class="ms-2 font-weight-bold">' . $model->status . '.</p></div>';
             }
